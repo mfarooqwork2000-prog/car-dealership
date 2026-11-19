@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: 15 23 42;
+  --secondary: 30 41 59;
+  --accent: 200 164 92;
+  --ink: 17 24 39;
+  --surface: 248 247 244;
+  --font-heading: "Playfair Display";
+  --font-body: "Inter";
+  --btn-radius: 0.25rem;
+  --layout-width: 1280px;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-surface font-sans text-ink antialiased; }
+  h1, h2, h3, h4 { @apply font-heading tracking-tight; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-accent; }
+}
+
+@layer components {
+  .container-x { @apply mx-auto w-full px-4 sm:px-6; max-width: var(--layout-width); }
+  .prose-cms { @apply space-y-4 leading-relaxed text-ink/80; }
+  .prose-cms h2 { @apply mt-6 text-2xl; }
+  .prose-cms a { @apply text-accent underline; }
+  .prose-cms ul { @apply list-disc pl-6; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.2em] text-accent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

@@ -1,0 +1,12 @@
+{
+  "installCommand": "npm ci",
+  "buildCommand": "npx prisma generate --schema prisma/schema.prisma && npm run build -w @cd/shared && npm run build -w @cd/web",
+  "outputDirectory": "apps/web/dist",
+  "functions": { "api/index.ts": { "maxDuration": 30, "includeFiles": "prisma/**" } },
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.ts" },
+    { "source": "/sitemap.xml", "destination": "/api/index.ts" },
+    { "source": "/robots.txt", "destination": "/api/index.ts" },
+    { "source": "/((?!assets/).*)", "destination": "/index.html" }
+  ]
+}
