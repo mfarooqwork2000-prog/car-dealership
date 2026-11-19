@@ -9,3 +9,9 @@ coverage
 
 .vs
 .vercel
+.vercel
+.env*
+
+.env.supabase
+
+api/index.mjs

@@ -1,0 +1,6 @@
+/.vs
+/.devdb
+/uploads
+/.env
+/.env.local
+node_modules

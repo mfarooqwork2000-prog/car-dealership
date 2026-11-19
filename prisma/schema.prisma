@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-3.0.x"]
 }
 
 datasource db {
@@ -7,7 +8,7 @@ datasource db {
   provider = "postgresql"
 }
 
-// ───────────── Enums ─────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Enums â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 enum PublishStatus {
   DRAFT
   PUBLISHED
@@ -44,7 +45,7 @@ enum LeadStatus {
   LOST
 }
 
-// ───────────── Auth / RBAC ─────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Auth / RBAC â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 model Role {
   id          String           @id @default(cuid())
   key         String           @unique // SUPER_ADMIN, ADMIN, SALES_MANAGER, SALES_REP, CONTENT_MANAGER
@@ -122,7 +123,7 @@ model PasswordResetToken {
   @@index([userId])
 }
 
-// ───────────── Inventory ─────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Inventory â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 model Make {
   id        String    @id @default(cuid())
   name      String    @unique
@@ -236,7 +237,7 @@ model VehicleFeature {
   @@unique([vehicleId, name])
 }
 
-// ───────────── Customers & Leads ─────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Customers & Leads â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 model Customer {
   id               String              @id @default(cuid())
   email            String              @unique
@@ -356,7 +357,7 @@ model TradeInRequest {
   createdAt   DateTime @default(now())
 }
 
-// ───────────── CMS ─────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ CMS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 model WebsitePage {
   id              String        @id @default(cuid())
   slug            String        @unique // "home" for homepage
@@ -488,7 +489,7 @@ model MediaAsset {
   createdAt DateTime @default(now())
 }
 
-// ───────────── Settings / System ─────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ Settings / System â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 model WebsiteSetting {
   key       String   @id // e.g. general, contact, seo, social, hours, email
   value     Json
